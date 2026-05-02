@@ -25,6 +25,8 @@ let currentPageIndex = 0;
 let currentZoom = 1;
 const minZoom = 0.6;
 const swipeThreshold = 50;
+const zoomStep = 0.1;
+const pinchStepDistance = 24;
 
 let touchMode = null;
 let swipeStartX = 0;
@@ -166,7 +168,10 @@ function handleTouchMove(event) {
       return;
     }
 
-    currentZoom = pinchStartZoom * (pinchDistance / pinchStartDistance);
+    const pinchDelta = pinchDistance - pinchStartDistance;
+    const pinchSteps = Math.trunc(pinchDelta / pinchStepDistance);
+
+    currentZoom = pinchStartZoom + pinchSteps * zoomStep;
     updateZoom();
   }
 }
@@ -218,12 +223,12 @@ nextButtons.forEach((button) => {
 });
 
 zoomOutButton.addEventListener("click", () => {
-  currentZoom -= 0.1;
+  currentZoom -= zoomStep;
   updateZoom();
 });
 
 zoomInButton.addEventListener("click", () => {
-  currentZoom += 0.1;
+  currentZoom += zoomStep;
   updateZoom();
 });
 

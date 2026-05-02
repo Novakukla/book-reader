@@ -256,7 +256,7 @@ body {
   border-radius: 18px;
   background: linear-gradient(180deg, #fff9e8 0%, #ffeef4 100%);
   min-width: 0;
-  touch-action: none;
+  touch-action: pan-y;
 }
 
 .br-reader__image {
