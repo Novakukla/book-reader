@@ -10,10 +10,13 @@
   color-scheme: light;
 }
 
+html,
+body {
+  background: transparent;
+}
+
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at top, #fff3cf 0%, #ffe7ef 48%, #fff8ef 100%);
   color: #1f2933;
   font-family: Georgia, "Times New Roman", serif;
 }
