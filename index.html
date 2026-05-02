@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Reader</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="br-reader" aria-label="Book reader">
+    <div class="br-reader__shell">
+      <header class="br-reader__header">
+        <div class="br-reader__actions" aria-label="Reader links">
+          <a
+            class="br-reader__link br-reader__link--blue"
+            href="./"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open in new tab
+          </a>
+          <a
+            class="br-reader__link br-reader__link--secondary"
+            href="#"
+            aria-label="Download PDF"
+          >
+            Download PDF
+          </a>
+        </div>
+      </header>
+
+      <section class="br-reader__card">
+        <div class="br-reader__status-row">
+          <button
+            class="br-reader__nav"
+            data-br-nav="prev"
+            type="button"
+            aria-label="Go to previous page"
+          >
+            Previous
+          </button>
+
+          <p class="br-reader__page-status" id="br-page-status-top" data-br-page-status aria-live="polite">
+            Page 1 of 10
+          </p>
+
+          <button
+            class="br-reader__nav"
+            data-br-nav="next"
+            type="button"
+            aria-label="Go to next page"
+          >
+            Next
+          </button>
+        </div>
+
+        <div class="br-reader__viewport">
+          <figure class="br-reader__figure" aria-labelledby="br-page-status-top">
+            <img
+              class="br-reader__image"
+              id="br-page-image"
+              src="pages/page-01.webp"
+              alt="Book page 1"
+            />
+            <figcaption class="br-reader__error" id="br-page-error" hidden>
+              Page image not found. Check that the file exists in /pages and matches the filename in script.js.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="br-reader__status-row br-reader__status-row--bottom">
+          <button
+            class="br-reader__nav"
+            data-br-nav="prev"
+            type="button"
+            aria-label="Go to previous page"
+          >
+            Previous
+          </button>
+
+          <p class="br-reader__page-status" data-br-page-status aria-live="polite">
+            Page 1 of 10
+          </p>
+
+          <button
+            class="br-reader__nav"
+            data-br-nav="next"
+            type="button"
+            aria-label="Go to next page"
+          >
+            Next
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
