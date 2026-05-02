@@ -16,8 +16,18 @@ const nextButtons = document.querySelectorAll('[data-br-nav="next"]');
 const pageImage = document.getElementById("br-page-image");
 const pageStatuses = document.querySelectorAll("[data-br-page-status]");
 const pageError = document.getElementById("br-page-error");
+const zoomInButton = document.getElementById("br-zoom-in");
+const zoomOutButton = document.getElementById("br-zoom-out");
+const readerElement = document.querySelector(".br-reader");
 
 let currentPageIndex = 0;
+let currentZoom = 1;
+
+function updateZoom() {
+  readerElement.style.setProperty("--br-zoom-scale", currentZoom.toFixed(2));
+  zoomOutButton.disabled = currentZoom <= 1;
+  zoomInButton.disabled = currentZoom >= 2;
+}
 
 function updateButtons() {
   const isFirstPage = currentPageIndex === 0;
@@ -99,6 +109,16 @@ nextButtons.forEach((button) => {
   });
 });
 
+zoomOutButton.addEventListener("click", () => {
+  currentZoom = Math.max(1, currentZoom - 0.1);
+  updateZoom();
+});
+
+zoomInButton.addEventListener("click", () => {
+  currentZoom = Math.min(2, currentZoom + 0.1);
+  updateZoom();
+});
+
 pageImage.addEventListener("load", showImage);
 pageImage.addEventListener("error", showImageError);
 
@@ -112,4 +132,5 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+updateZoom();
 renderPage();
